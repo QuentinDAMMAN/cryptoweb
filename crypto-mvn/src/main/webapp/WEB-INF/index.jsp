@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+
 <title>Portefeuille</title>
 </head>
 <body>
@@ -22,12 +21,24 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav lien ">
-							<a class="nav-item nav-link active mr-5 ml-5" href="index.html"
-								style="color: rgba(255, 255, 255, 0.575) !important;">LES
-								CRYTPO-MONNAIES<span class="sr-only">(current)</span>
-							</a> <a class="nav-item nav-link mr-5 ml-5" href="portefeuille.html">MON
-								PORTEFEUILLE</a> <a class="nav-item nav-link mr-5 ml-5 "
-								href="historique.html">MON HISTORIQUE</a>
+
+							<div>
+								<c:url value="index" var="index"></c:url>
+								<a class="nav-item nav-link active mr-5 ml-5" href="${ index }">LES
+									CRYPTO-MONNAIES</a>
+							</div>
+							<div>
+								<c:url value="portefeuille" var="portefeuille"></c:url>
+								<a class="nav-item nav-link active mr-5 ml-5"
+									href="${ portefeuille }">MON PORTEFEUILLE</a>
+							</div>
+							<div>
+								<c:url value="historique" var="historique"></c:url>
+								<a class="nav-item nav-link active mr-5 ml-5"
+									href="${ historique }">MON HISTORIQUE</a>
+							</div>
+
+
 						</div>
 					</div>
 				</nav>
@@ -36,6 +47,5 @@
 	</div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="js/bootstrap.js"></script>
+
 </html>
