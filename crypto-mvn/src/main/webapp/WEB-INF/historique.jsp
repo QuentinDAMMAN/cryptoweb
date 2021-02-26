@@ -31,8 +31,8 @@
 									href="${ portefeuille }">MON PORTEFEUILLE</a>
 							</div>
 							<div>
-								<c:url value="historique" var="historique"></c:url>
-								<a class="nav-item nav-link active mr-5 ml-5"
+								<c:url value="historique" var="historique" ></c:url>
+								<a class="nav-item nav-link active mr-5 ml-5" style="color: rgba(255, 255, 255, 0.575)!important;"
 									href="${ historique }">MON HISTORIQUE</a>
 							</div>
 						</div>
