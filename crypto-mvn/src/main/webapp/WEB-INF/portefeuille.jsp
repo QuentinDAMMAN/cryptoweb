@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Portefeuille</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -26,8 +27,10 @@
 							</div>
 							<div>
 								<c:url value="portefeuille" var="portefeuille"></c:url>
-								<a class="nav-item nav-link active mr-5 ml-5" 
-									href="${ portefeuille }" style="color: rgba(255, 255, 255, 0.575)!important;">MON PORTEFEUILLE</a>
+								<a class="nav-item nav-link active mr-5 ml-5"
+									href="${ portefeuille }"
+									style="color: rgba(255, 255, 255, 0.575) !important;">MON
+									PORTEFEUILLE</a>
 							</div>
 							<div>
 								<c:url value="historique" var="historique"></c:url>
