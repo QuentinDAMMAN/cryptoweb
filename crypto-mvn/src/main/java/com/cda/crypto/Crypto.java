@@ -1,9 +1,11 @@
 package com.cda.crypto;
 
-public class Crypto {
+import com.cda.sql.MyConnection;
 
+public class Crypto {
 	
 	
-	
-	
+	public static void main(String[] args) {
+		System.out.println(MyConnection.getConnection());
+	}
 }
