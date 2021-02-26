@@ -22,12 +22,13 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav lien ">
-							<a class="nav-item nav-link active mr-5 ml-5" href="index.html"
-								style="color: rgba(255, 255, 255, 0.575) !important;">LES
+							<a class="nav-item nav-link active mr-5 ml-5" href="index.html">LES
 								CRYTPO-MONNAIES<span class="sr-only">(current)</span>
 							</a> <a class="nav-item nav-link mr-5 ml-5" href="portefeuille.html">MON
-								PORTEFEUILLE</a> <a class="nav-item nav-link mr-5 ml-5 "
-								href="historique.html">MON HISTORIQUE</a>
+								PORTEFEUILLE</a> <a class="nav-item nav-link mr-5 ml-5 lol "
+								href="historique.html"
+								style="color: rgba(255, 255, 255, 0.575) !important;">MON
+								HISTORIQUE</a>
 						</div>
 					</div>
 				</nav>
