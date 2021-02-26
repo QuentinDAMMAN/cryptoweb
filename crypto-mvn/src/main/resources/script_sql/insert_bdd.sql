@@ -1,0 +1,11 @@
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Bitcoin", "BTC", 150);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Ethereum", "ETH", 20);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Binance Coin", "BNB", 50);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Tether", "USDT", 30);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Cardano", "ADA", 70);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Polkadot", "DOT", 40);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("XRP", "XRP", 200);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Litecoin Coin", "LTC", 50);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Chainlink", "LINK", 30);
+INSERT INTO crypto_monnaies (nom,label,prix_actuel) values ("Bitcoin Cash", "BCH", 70);
+INSERT INTO porte_monnaies (Id_porte_monnaies) values (1);
