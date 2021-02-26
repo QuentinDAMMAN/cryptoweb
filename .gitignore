@@ -5,6 +5,7 @@ target/
 libs/
 tmp/
 node_modules/
+/Servers/
  
 # OS Files #
 .DS_Store
@@ -93,3 +94,4 @@ local.properties
 
 # Testing environment specific
 derby.log
+Servers/Tomcat v9.0 Server at localhost-config/catalina.policy
