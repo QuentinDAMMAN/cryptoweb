@@ -14,7 +14,7 @@ public interface IDao<T> {
 
 	ArrayList <T> getAll();
 
-	Boolean update(String champ, String value, int id);
+	Boolean update(double value, String label);
 
 	Boolean delete(int id);
 

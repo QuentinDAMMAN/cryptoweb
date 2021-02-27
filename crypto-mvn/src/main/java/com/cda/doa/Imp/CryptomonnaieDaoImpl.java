@@ -51,6 +51,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results != null) {
@@ -72,6 +74,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results != null) {
@@ -93,6 +97,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results != null) {
@@ -114,6 +120,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 						results.getDouble(4));
 				listCrytomonnaie.add(crypto);
 			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results != null) {
@@ -123,25 +131,18 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 	}
 
 	@Override
-	public Boolean update(String champ, String value, int id) {
-		String request = "update crypto_monnaies set " + champ + " =? where Id_crypto_monnaies =?";
+	public Boolean update(double value, String label) {
+		String request = "update crypto_monnaies set  prix_actuel =? where Id_crypto_monnaies =(select Id_crypto_monnaies from crypto_monnaies where label=?)";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 
-			switch (champ.toLowerCase()) {
-			case "nom":
-				stmt.setString(1, value);
-				break;
-			case "label":
-				stmt.setString(1, value);
-				break;
-			case "prix_actuel":
-				stmt.setDouble(1, Double.parseDouble(value));
-				break;
-			}
-			stmt.setInt(2, id);
+			stmt.setDouble(1, value);
+
+			stmt.setString(2, label);
 			results = stmt.executeUpdate();
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results == 1) {
@@ -158,6 +159,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 			stmt.setInt(1, id);
 			results = stmt.executeUpdate();
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		} catch (SQLException e) {
 		}
 		if (results == 1) {
