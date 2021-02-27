@@ -132,7 +132,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 
 	@Override
 	public Boolean update(double value, String label) {
-		String request = "update crypto_monnaies set  prix_actuel =? where Id_crypto_monnaies =(select Id_crypto_monnaies from crypto_monnaies where label=?)";
+		String request = "update crypto_monnaies set prix_actuel =? where Id_crypto_monnaies =(select Id_crypto_monnaies from crypto_monnaies where label=?)";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
@@ -152,12 +152,12 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 	}
 
 	@Override
-	public Boolean delete(int id) {
-		String request = "delete from crypto_monnaies where Id_crypto_monnaies =?";
+	public Boolean delete(String label) {
+		String request = "delete from crypto_monnaies where label =?";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
-			stmt.setInt(1, id);
+			stmt.setString(1, label);
 			results = stmt.executeUpdate();
 		} catch (SQLIntegrityConstraintViolationException e) {
 
@@ -168,99 +168,4 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 		}
 		return false;
 	}
-
-	/*
-	 * 
-	 */
-
-//	public static void main(String[] args) {
-//	CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-//
-//	/*
-//	 * Test connection
-//	 */
-////	System.out.println(MyConnection.getConnection());
-//
-//	/*
-//	 * Test Create Crypto (dur)
-//	 */
-////	Crytomonnaie vCrytomonnaie = new Crytomonnaie("DirectRacingCx", "DRC", 200.00);
-//	// System.out.println(vCrytomonnaie);
-//
-//	/*
-//	 * Test Create Crypto
-//	 */
-////	Crytomonnaie rep = test.create(c);
-////
-////	if (rep != null) {
-////	System.out.println(rep);
-////	}
-//
-//	/*
-//	 * Test List Crypto
-//	 */
-////	ArrayList <Crytomonnaie> listTest = new ArrayList<Crytomonnaie>();
-////	
-////	listTest = test.getAll();
-////	
-////	for (Crytomonnaie crypto : listTest) {
-////		System.out.println(crypto);
-////	}
-//
-////	/*
-////	 * Test GetByID
-////	 */
-////	Crytomonnaie rep = test.getById(11);
-////
-////	if (rep != null) {
-////		System.out.println(rep);
-////	}
-//
-//	/*
-//	 * Test Update Crypto
-//	 */
-////	String champs = "nom";
-////	String value = "Guikolp";
-////	boolean update = test.update(champs, value, 11);
-////
-////	if (update) {
-////		System.out.println("modif , ok !");
-////	} else {
-////		System.out.println("modif , erreur !");
-////	}
-//	
-//	/*
-//	 * Test Delete Crypto
-//	 */
-////	boolean delete = test.delete(11);
-////
-////	if (delete) {
-////		System.out.println("delete , ok !");
-////	} else {
-////		System.out.println("delete , erreur !");
-////	}
-//	
-//	/*
-//	 * Test getByNAME
-//	 */
-////	Crytomonnaie rep = test.getByName("Bitcoin");
-////
-////	if (rep != null) {
-////		System.out.println(rep);
-////	}
-//	
-//	/*
-//	 * Test getByLABEL
-//	 */
-////	Crytomonnaie rep = test.getByLabel("BTC");
-////
-////	if (rep != null) {
-////		System.out.println(rep);
-////	}
-//	
-//	
-//	
-//
-//}
-
 }
