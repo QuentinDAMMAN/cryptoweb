@@ -16,7 +16,7 @@
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp </url-pattern>
-			<include-prelude>/WEB-INF/jstLib.jsp</include-prelude>
+			<include-prelude>/WEB-INF/commun/jstLib.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
 </web-app>

@@ -1,18 +1,37 @@
 package com.cda.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cda.dao.IDao;
+import com.cda.doa.Imp.CryptomonnaieDaoImpl;
+import com.cda.model.Cryptomonnaie;
+
 @WebServlet("/index")
 public class ServIndex extends HttpServlet {
+
+	private IDao cryptoDAO;
+
+	public ServIndex() {
+		this.cryptoDAO = new CryptomonnaieDaoImpl();
+
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		ArrayList<Cryptomonnaie> cryptomonnaies = this.cryptoDAO.getAll();
+
+		request.setAttribute("cryptomonnaies", cryptomonnaies);
+
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
 	}

@@ -7,13 +7,13 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import com.cda.dao.IDao;
-import com.cda.model.Crytomonnaie;
+import com.cda.model.Cryptomonnaie;
 import com.cda.sql.MyConnection;
 
-public class CryptomonnaieDaoImpl implements IDao<Crytomonnaie> {
+public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 
 	@Override
-	public Crytomonnaie create(Crytomonnaie crypto) {
+	public Cryptomonnaie create(Cryptomonnaie crypto) {
 
 		String request = "insert into crypto_monnaies (nom,label,prix_actuel) values (?,?,?)";
 
@@ -39,16 +39,16 @@ public class CryptomonnaieDaoImpl implements IDao<Crytomonnaie> {
 	}
 
 	@Override
-	public Crytomonnaie getById(int id) {
+	public Cryptomonnaie getById(int id) {
 		String request = "select * from crypto_monnaies where Id_crypto_monnaies =?";
 		ResultSet results = null;
-		Crytomonnaie crypto = null;
+		Cryptomonnaie crypto = null;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 			stmt.setInt(1, id);
 			results = stmt.executeQuery();
 			if (results.next()) {
-				crypto = new Crytomonnaie(results.getInt(1), results.getString(2), results.getString(3),
+				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
 		} catch (SQLException e) {
@@ -60,16 +60,16 @@ public class CryptomonnaieDaoImpl implements IDao<Crytomonnaie> {
 	}
 
 	@Override
-	public Crytomonnaie getByName(String name) {
+	public Cryptomonnaie getByName(String name) {
 		String request = "select * from crypto_monnaies where nom =?";
 		ResultSet results = null;
-		Crytomonnaie crypto = null;
+		Cryptomonnaie crypto = null;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 			stmt.setString(1, name);
 			results = stmt.executeQuery();
 			if (results.next()) {
-				crypto = new Crytomonnaie(results.getInt(1), results.getString(2), results.getString(3),
+				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
 		} catch (SQLException e) {
@@ -81,16 +81,16 @@ public class CryptomonnaieDaoImpl implements IDao<Crytomonnaie> {
 	}
 
 	@Override
-	public Crytomonnaie getByLabel(String label) {
+	public Cryptomonnaie getByLabel(String label) {
 		String request = "select * from crypto_monnaies where label =?";
 		ResultSet results = null;
-		Crytomonnaie crypto = null;
+		Cryptomonnaie crypto = null;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 			stmt.setString(1, label);
 			results = stmt.executeQuery();
 			if (results.next()) {
-				crypto = new Crytomonnaie(results.getInt(1), results.getString(2), results.getString(3),
+				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 			}
 		} catch (SQLException e) {
@@ -102,15 +102,15 @@ public class CryptomonnaieDaoImpl implements IDao<Crytomonnaie> {
 	}
 
 	@Override
-	public ArrayList<Crytomonnaie> getAll() {
+	public ArrayList<Cryptomonnaie> getAll() {
 		String request = "select * from crypto_monnaies order by Id_crypto_monnaies";
 		ResultSet results = null;
-		ArrayList<Crytomonnaie> listCrytomonnaie = new ArrayList<Crytomonnaie>();
+		ArrayList<Cryptomonnaie> listCrytomonnaie = new ArrayList<Cryptomonnaie>();
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
 			results = stmt.executeQuery();
 			while (results.next()) {
-				Crytomonnaie crypto = new Crytomonnaie(results.getInt(1), results.getString(2), results.getString(3),
+				Cryptomonnaie crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
 						results.getDouble(4));
 				listCrytomonnaie.add(crypto);
 			}

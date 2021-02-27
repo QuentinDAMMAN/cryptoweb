@@ -6,12 +6,15 @@
 <title>Portefeuille</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
+
+
+
 <body>
 
 
-	<div class="header">
+	<div class="header fixed-top">
 		<div class="top-header">
-			<div class="container-fluid p-0">
+			<div class="flex-column flex-md-row ">
 				<nav class="navbar navbar-expand-lg navbar-light bg-faded menu ">
 					<a class="navbar-brand mr-5 marque" href="#">CRYPTOBASE</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -47,8 +50,7 @@
 			</div>
 		</div>
 	</div>
-
-
+<br><br><br>
 	<div class=" container-fluid tableau p-0">
 
 		<table class="table table-dark text-center">
@@ -62,55 +64,26 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="centrer">
-					<th scope="row">1</th>
-					<td>Bitcoin</td>
-					<td>BTC</td>
-					<td>40000</td>
-					<td>
-						<div class="boutton-swag">
-							<a href="#">
-								<p>
-									<span class="bg"></span><span class="base"></span><span
-										class="text">BUY</span>
-								</p>
-							</a>
-						</div>
-					</td>
-				</tr>
-				<tr class="centrer">
-					<th scope="row">2</th>
-					<td>Cardano</td>
-					<td>ADA</td>
-					<td>0,90</td>
-					<td>
-						<div class="boutton-swag">
-							<a href="#">
-								<p>
-									<span class="bg"></span> <span class="base"></span> <span
-										class="text">BUY</span>
-								</p>
 
-							</a>
-						</div>
-					</td>
-				</tr>
-				<tr class="centrer">
-					<th scope="row">3</th>
-					<td>Ethereum</td>
-					<td>ETH</td>
-					<td>1200</td>
-					<td>
-						<div class="boutton-swag">
-							<a href="#">
-								<p>
-									<span class="bg"></span><span class="base"></span><span
-										class="text">BUY</span>
-								</p>
-							</a>
-						</div>
-					</td>
-				</tr>
+				<c:forEach items="${cryptomonnaies }" var="cryptomonnaies">
+					<tr class="centrer">
+						<th scope="row">${cryptomonnaies.id }</th>
+						<td>${cryptomonnaies.nom }</td>
+						<td>${cryptomonnaies.label }</td>
+						<td>${cryptomonnaies.prixActuel }</td>
+						<td>
+							<div class="boutton-swag">
+								<a href="#">
+									<p>
+										<span class="bg"></span><span class="base"></span><span
+											class="text">BUY</span>
+									</p>
+								</a>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+
 
 			</tbody>
 		</table>
