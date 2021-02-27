@@ -2,6 +2,12 @@ html, body {
 	background-color: rgb(148, 141, 132);
 }
 
+.test {
+	
+	position: fixed;
+	
+}
+
 /* -------NAV-------- */
 .menu {
 	background-color: rgb(148, 141, 132);
