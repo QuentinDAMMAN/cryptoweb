@@ -6,13 +6,13 @@ html, body {
 	position: fixed;
 }
 
-/* MODAL AJOUTER */
+/* MODAL */
 #ajouter, #modifier, #supprimer {
 	display: none;
 }
 
 
-#class
+
 
 /* -------NAV-------- */
 .menu {

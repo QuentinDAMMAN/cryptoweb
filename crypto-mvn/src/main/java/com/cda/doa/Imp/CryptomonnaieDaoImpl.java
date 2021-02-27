@@ -132,7 +132,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 
 	@Override
 	public Boolean update(float value, String label) {
-		String request = "update crypto_monnaies set prix_actuel =? where label=?";
+		String request = "update crypto_monnaies set prix_actuel =? where label =?";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);

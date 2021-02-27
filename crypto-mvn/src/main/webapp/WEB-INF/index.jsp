@@ -125,7 +125,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modifier le prix actuel d'une cryptomonnaie</h5>
+                    <h5 class="modal-title">Surrimer une cryptomonnaie</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -134,7 +134,7 @@
                     <form action="/crypto-mvn/supp" method="post">
                         <label for="label">Label : </label>
                         <input type="text" name="label">
-                        <button id="submitModalDel" type="button" class="btn btn-primary">Save changes</button>
+                        <button id="submitModalDel" type="submit" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
                 <div class="modal-footer">
