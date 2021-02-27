@@ -7,14 +7,14 @@ public interface IDao<T> {
 	T create(T t);
 
 	T getById(int id);
-	
+
 	T getByName(String name);
-	
+
 	T getByLabel(String label);
 
-	ArrayList <T> getAll();
+	ArrayList<T> getAll();
 
-	Boolean update(double value, String label);
+	Boolean update(float value, String label);
 
 	Boolean delete(String label);
 

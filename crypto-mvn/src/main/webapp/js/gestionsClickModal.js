@@ -1,9 +1,4 @@
-"use strict"
 $(function(){
-
-	
-	
-
 	// ajout
 	var $ajoutModal = $("#ajouterModal");
 	var $ajouter = $("#ajouter");
@@ -68,18 +63,6 @@ $(function(){
 		$supprimer.css("display", "none");
 		console.log("modal supprimer => donnée transférer !");
 	});
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
 
