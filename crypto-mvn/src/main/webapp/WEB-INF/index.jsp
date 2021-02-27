@@ -61,17 +61,16 @@
 	</div>
 
 	<div id="ajouter" class="modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Ajouter une cryptomonnaie</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="post">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une cryptomonnaie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/crypto-mvn/ajout" method="post">
                         <label for="nom">Nom : </label>
                         <input type="text" name="nom">
                         <br>
@@ -82,17 +81,15 @@
                         <input type="number" step="0.01" name="prix">
                         <button id="submitModalAdd" type="submit" class="btn btn-primary">Save changes</button>
                     </form>
-				</div>
-				<div class="modal-footer">
-					<button id="closeModalAdd" type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="modifier" class="modal" tabindex="0" role="dialog">
-
+                </div>
+                <div class="modal-footer">
+                    <button id="closeModalAdd" type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modifier" class="modal" tabindex="0" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,19 +110,17 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-					<button id="closeModalUpd" type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="supprimer" class="modal" tabindex="1" role="dialog">
-
+                    <button id="closeModalUpd" type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="supprimer" class="modal" tabindex="1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Surrimer une cryptomonnaie</h5>
+                    <h5 class="modal-title">Modifier le prix actuel d'une cryptomonnaie</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
