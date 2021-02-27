@@ -23,7 +23,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, crypto.getNom());
 			stmt.setString(2, crypto.getLabel());
-			stmt.setDouble(3, crypto.getPrixActuel());
+			stmt.setFloat(3, crypto.getPrixActuel());
 			stmt.executeUpdate();
 			results = stmt.getGeneratedKeys();
 			if (results.next()) {
@@ -49,7 +49,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 			results = stmt.executeQuery();
 			if (results.next()) {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
-						results.getDouble(4));
+						results.getFloat(4));
 			}
 		} catch (SQLIntegrityConstraintViolationException e) {
 
@@ -72,7 +72,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 			results = stmt.executeQuery();
 			if (results.next()) {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
-						results.getDouble(4));
+						results.getFloat(4));
 			}
 		} catch (SQLIntegrityConstraintViolationException e) {
 
@@ -95,7 +95,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 			results = stmt.executeQuery();
 			if (results.next()) {
 				crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
-						results.getDouble(4));
+						results.getFloat(4));
 			}
 		} catch (SQLIntegrityConstraintViolationException e) {
 
@@ -117,7 +117,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 			results = stmt.executeQuery();
 			while (results.next()) {
 				Cryptomonnaie crypto = new Cryptomonnaie(results.getInt(1), results.getString(2), results.getString(3),
-						results.getDouble(4));
+						results.getFloat(4));
 				listCrytomonnaie.add(crypto);
 			}
 		} catch (SQLIntegrityConstraintViolationException e) {
@@ -131,8 +131,8 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 	}
 
 	@Override
-	public Boolean update(double value, String label) {
-		String request = "update crypto_monnaies set prix_actuel =? where Id_crypto_monnaies =(select Id_crypto_monnaies from crypto_monnaies where label=?)";
+	public Boolean update(float value, String label) {
+		String request = "update crypto_monnaies set prix_actuel =? where label =?";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);

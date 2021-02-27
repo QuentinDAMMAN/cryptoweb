@@ -14,9 +14,9 @@ public class Cryptomonnaie {
 	private int id;
 	private String nom;
 	private String label;
-	private Double prixActuel;
+	private float prixActuel;
 
-	public Cryptomonnaie(String nom, String label, Double prixActuel) {
+	public Cryptomonnaie(String nom, String label, float prixActuel) {
 		super();
 		this.nom = nom;
 		this.label = label;
