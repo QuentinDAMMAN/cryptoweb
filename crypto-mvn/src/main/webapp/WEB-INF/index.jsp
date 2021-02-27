@@ -46,9 +46,9 @@
 								<button class="btn btn-secondary dropdown-toggle" type="button"
 									data-toggle="dropdown">Actions Cryptos</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" id="ajouterModal" href="#">Ajouter</a> <a
-										class="dropdown-item" id="modifierModal" href="#">Modifier prix</a> <a
-										class="dropdown-item" id="supprimerModal" href="#">Supprimer</a>
+									<a class="dropdown-item" id="ajouterModal" href="#">Ajouter</a>
+									<a class="dropdown-item" id="modifierModal" href="#">Modifier
+										prix</a> <a class="dropdown-item" id="supprimerModal" href="#">Supprimer</a>
 								</div>
 							</div>
 
@@ -72,16 +72,13 @@
 				</div>
 				<div class="modal-body">
 					<form action="post">
-                        <label for="nom">Nom : </label>
-                        <input type="text" name="nom">
-                        <br>
-                        <label for="label">Label : </label>
-                        <input type="text" name="label">
-                        <br>
-                        <label for="prix">Prix actuel : </label>
-                        <input type="number" name="prix">
-						<button id="submitModalAdd" type="submit" class="btn btn-primary">Save changes</button>
-                    </form>
+						<label for="nom">Nom : </label> <input type="text" name="nom">
+						<br> <label for="label">Label : </label> <input type="text"
+							name="label"> <br> <label for="prix">Prix
+							actuel : </label> <input type="number" name="prix">
+						<button id="submitModalAdd" type="submit" class="btn btn-primary">Save
+							changes</button>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<button id="closeModalAdd" type="button" class="btn btn-secondary"
@@ -92,58 +89,59 @@
 	</div>
 
 	<div id="modifier" class="modal" tabindex="0" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modifier le prix actuel d'une cryptomonnaie</h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="post">
-                        <br>
-                        <label for="label">Label : </label>
-                        <input type="text" name="label">
-                        <br>
-                        <label for="prix">Nouveau prix : </label>
-                        <input type="number" name="prix">
-						<button id="submitModalUpd" type="submit" class="btn btn-primary">Save changes</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modifier le prix actuel d'une
+						cryptomonnaie</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="post">
+						<br> <label for="label">Label : </label> <input type="text"
+							name="label"> <br> <label for="prix">Nouveau
+							prix : </label> <input type="number" name="prix">
+						<button id="submitModalUpd" type="submit" class="btn btn-primary">Save
+							changes</button>
+					</form>
+				</div>
+				<div class="modal-footer">
 					<button id="closeModalUpd" type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
 				</div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
 	<div id="supprimer" class="modal" tabindex="1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modifier le prix actuel d'une cryptomonnaie</h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="post">
-                        <label for="label">Label : </label>
-                        <input type="text" name="label">
-						<button id="submitModalDel" type="button" class="btn btn-primary">Save changes</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="closeModalDel" type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modifier le prix actuel d'une
+						cryptomonnaie</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="post">
+						<label for="label">Label : </label> <input type="text"
+							name="label">
+						<button id="submitModalDel" type="button" class="btn btn-primary">Save
+							changes</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="closeModalDel" type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<br>
@@ -163,14 +161,17 @@
 			</thead>
 			<tbody>
 
-				<c:forEach items="${cryptomonnaies }" var="cryptomonnaies">
+				<c:forEach items="${cryptomonnaies }" var="cryptomonnaies" varStatus="vs">
+
 					<tr class="centrer">
 						<th scope="row">${cryptomonnaies.id }</th>
 						<td>${cryptomonnaies.nom }</td>
 						<td>${cryptomonnaies.label }</td>
 						<td>${cryptomonnaies.prixActuel }</td>
 						<td>
-							<div class="boutton-swag">
+							<div class="boutton-swag span4 proj-div"
+								id="ajouterModal${vs.index}" href="#" data-toggle="modal"
+								data-target="#acheter${vs.index}">
 								<a href="#">
 									<p>
 										<span class="bg"></span><span class="base"></span><span
@@ -180,6 +181,30 @@
 							</div>
 						</td>
 					</tr>
+
+					<div id="acheter${vs.index}" class="modal" tabindex="-1" role="dialog">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">
+										ACHAT ${cryptomonnaies.label }
+									</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form action="post">
+									<p>Prix actuel :  ${cryptomonnaies.prixActuel }</p>
+						<label for=prix>Valeur : </label> <input type="number"
+							name="prix">
+						<button id="submitModalDel" type="button" class="btn btn-primary">ACHETER</button>
+					</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</c:forEach>
 
 
