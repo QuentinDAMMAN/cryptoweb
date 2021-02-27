@@ -7,7 +7,7 @@ html, body {
 }
 
 /* MODAL AJOUTER */
-#ajouter {
+#ajouter, #modifier, #supprimer {
 	display: none;
 }
 

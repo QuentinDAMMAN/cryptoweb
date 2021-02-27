@@ -16,6 +16,6 @@ public interface IDao<T> {
 
 	Boolean update(double value, String label);
 
-	Boolean delete(int id);
+	Boolean delete(String label);
 
 }
