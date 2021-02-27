@@ -42,6 +42,15 @@
 								<a class="nav-item nav-link active mr-5 ml-5"
 									href="${ historique }">MON HISTORIQUE</a>
 							</div>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button"
+									data-toggle="dropdown">Actions Cryptos</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" id="ajouterModal"href="#">Ajouter</a> <a
+										class="dropdown-item" href="#">Modifier prix</a> <a
+										class="dropdown-item" href="#">Supprimer</a>
+								</div>
+							</div>
 
 
 						</div>
@@ -50,7 +59,33 @@
 			</div>
 		</div>
 	</div>
-<br><br><br>
+
+	<div id="ajouter" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Ajouter une cryptomonnaie</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Modal body text goes here.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
 	<div class=" container-fluid tableau p-0">
 
 		<table class="table table-dark text-center">
@@ -91,5 +126,5 @@
 	</div>
 
 </body>
-
+<script src="js/script.js"></script>
 </html>

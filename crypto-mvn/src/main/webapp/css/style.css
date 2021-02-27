@@ -3,9 +3,12 @@ html, body {
 }
 
 .test {
-	
 	position: fixed;
-	
+}
+
+/* MODAL AJOUTER */
+#ajouter {
+	display: none;
 }
 
 /* -------NAV-------- */
