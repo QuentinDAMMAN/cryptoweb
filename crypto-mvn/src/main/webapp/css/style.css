@@ -198,3 +198,67 @@ html, body {
 .centrer td:last-of-type {
 	transform: translateY(0%);
 }
+
+span.delta-nav{
+	font-size:20px;
+}
+
+
+.delta-position{
+	position: absolute; 
+	right: 30px; 
+	top: 20px;
+	}
+
+@media (max-width: 992px) {
+  .delta-position {
+   right: 100px;
+  }
+}
+
+
+.position-drop{
+	position:absolute;
+	left:60%;
+	top:18%;
+}
+
+@media (max-width: 1345px) {
+  .position-drop {
+   left:70%
+  }
+}
+
+@media (max-width: 1240px) {
+  .position-drop {
+   left:75%
+  }
+}
+
+@media (max-width: 1224px) {
+  .position-drop {
+   left:80%
+  }
+}
+
+@media (max-width: 1100px) {
+  .position-drop {
+   left:85%
+  }
+}
+
+
+@media (max-width: 992px) {
+  .position-drop {
+   left:70%;
+  }
+}
+
+
+.droite{
+	float:right;
+}
+
+.bgd{
+	background:rgb(148, 141, 132);
+}
