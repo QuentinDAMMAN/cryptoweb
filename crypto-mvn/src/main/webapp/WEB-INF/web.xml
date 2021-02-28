@@ -25,4 +25,14 @@
     <servlet-name>ServAchat</servlet-name>
     <url-pattern>/ServAchat</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServVendre</display-name>
+    <servlet-name>ServVendre</servlet-name>
+    <servlet-class>com.cda.servlet.ServVendre</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServVendre</servlet-name>
+    <url-pattern>/ServVendre</url-pattern>
+  </servlet-mapping>
 </web-app>

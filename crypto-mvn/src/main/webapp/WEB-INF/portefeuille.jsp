@@ -54,6 +54,7 @@
 					<th scope="col">PRIX ACHAT</th>
 					<th scope="col">PRIX ACTUEL</th>
 					<th scope="col">DELTA</th>
+					<th scope="col">VENDRE</th>
 
 				</tr>
 			</thead>
@@ -70,9 +71,43 @@
 						<td>${cryptoportefeuille.prixAchat }</td>
 						<td>${cryptoportefeuille.prixActuel }</td>
 						<td>${cryptoportefeuille.delta }</td>
+						<td>
+							<div class="boutton-swag span4 proj-div"
+								id="ajouterModal${vs.index}" href="#" data-toggle="modal"
+								data-target="#vendre${vs.index}">
+								<a href="#">
+									<p>
+										<span class="bg"></span><span class="base"></span><span
+											class="text">SELL</span>
+									</p>
+								</a>
+							</div>
+						</td>
 
 					</tr>
-
+	<div id="vendre${vs.index}" class="modal" tabindex="-1"
+						role="dialog">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">VENDRE ${cryptomonnaies.label }</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form method="post" action="/crypto-mvn/vendre">
+										<label for="label">Confirmez le label : </label> <input
+											type="text" name="label"> <br> <label for=prix>Valeur
+											: </label> <input type="number" step="0.01" name="prix">
+										<button id="submitModalDel" type="submit"
+											class="btn btn-primary">ACHETER</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</c:forEach>
 
 
