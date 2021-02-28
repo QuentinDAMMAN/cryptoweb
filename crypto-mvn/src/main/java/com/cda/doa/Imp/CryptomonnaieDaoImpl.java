@@ -62,7 +62,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 	}
 
 	@Override
-	public Cryptomonnaie getByName(String name) {
+	public String getByName(String name) {
 		String request = "select * from crypto_monnaies where nom =?";
 		ResultSet results = null;
 		Cryptomonnaie crypto = null;
@@ -79,7 +79,7 @@ public class CryptomonnaieDaoImpl implements IDao<Cryptomonnaie> {
 		} catch (SQLException e) {
 		}
 		if (results != null) {
-			return crypto;
+			return crypto.getNom();
 		}
 		return null;
 	}
