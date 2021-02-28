@@ -33,15 +33,20 @@
 									href="${ portefeuille }">MON PORTEFEUILLE</a>
 							</div>
 
+						
 
 
-
-						</div>
 					</div>
 				</nav>
+				<div class="delta-position">
+								<span class="delta-nav">DELTA TOTAL : 3939</span>
+							</div>
+						</div>
 			</div>
+
 		</div>
 	</div>
+
 	<div class=" container-fluid tableau p-0">
 
 		<table class="table table-dark text-center">
@@ -69,7 +74,8 @@
 						<td>${cryptoportefeuille.valeurAchat }</td>
 						<td>${cryptoportefeuille.prixAchat }</td>
 						<td>${cryptoportefeuille.prixActuel }</td>
-						<td class="delta">${cryptoportefeuille.delta }</td>
+						<td class="delta"
+							style="transform: translateY(0%) !important; padding-top: 37px;">${cryptoportefeuille.delta }</td>
 						<td>
 							<div class="boutton-swag span4 proj-div"
 								id="ajouterModal${vs.index}" href="#" data-toggle="modal"
@@ -86,9 +92,9 @@
 					<div id="vendre${vs.index}" class="modal" tabindex="-1"
 						role="dialog">
 						<div class="modal-dialog" role="document">
-							<div class="modal-content">
+							<div class="modal-content"  style="width:375px;">
 								<div class="modal-header">
-									<h5 class="modal-title">VENDRE ${cryptomonnaies.label }</h5>
+									<h5 class="modal-title" style="margin-left:33%">VENDRE ${cryptoportefeuille.label}</h5>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
@@ -97,10 +103,13 @@
 								<div class="modal-body">
 									<form method="post" action="/crypto-mvn/vendre">
 										<label for="label">Confirmez le label : </label> <input
-											type="text" name="label"> <br> <label for=prix>Valeur
+											type="text" name="label"> <br> <label for=prix style="margin-left:83px;margin-bottom:30px">Valeur
 											: </label> <input type="number" step="0.01" name="prix">
+											<br>
 										<button id="submitModalDel" type="submit"
-											class="btn btn-primary">VENDRE</button>
+											class="btn btn-primary bgd">Vendre</button>
+											<button id="closeModalDel" type="button" class="btn btn-secondary droite"
+                        data-dismiss="modal">Fermer</button>
 									</form>
 								</div>
 							</div>
