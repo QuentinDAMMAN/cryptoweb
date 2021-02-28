@@ -23,7 +23,7 @@ CREATE TABLE porte_monnaies(
 CREATE TABLE contenu(
    Id_crypto_monnaies INT,
    Id_porte_monnaies INT,
-   nombre_unite DECIMAL(15,2) NOT NULL,
+   nombre_unite DECIMAL(15,2) UNSIGNED NOT NULL,
    date_achat DATE NOT NULL,
    delta DECIMAL(15,2) NOT NULL,
    prix_achat DECIMAL(15,2) NOT NULL,
