@@ -37,11 +37,7 @@
 								<a class="nav-item nav-link active mr-5 ml-5"
 									href="${ portefeuille }">MON PORTEFEUILLE</a>
 							</div>
-							<div>
-								<c:url value="historique" var="historique"></c:url>
-								<a class="nav-item nav-link active mr-5 ml-5"
-									href="${ historique }">MON HISTORIQUE</a>
-							</div>
+
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button"
 									data-toggle="dropdown">Actions Cryptos</button>
