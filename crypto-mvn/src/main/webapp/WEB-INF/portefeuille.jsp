@@ -32,6 +32,10 @@
 									style="color: rgba(255, 255, 255, 0.575) !important;"
 									href="${ portefeuille }">MON PORTEFEUILLE</a>
 							</div>
+
+
+
+
 						</div>
 					</div>
 				</nav>
@@ -54,6 +58,7 @@
 				</tr>
 			</thead>
 			<tbody>
+
 				<c:forEach items="${cryptoportefeuille }" var="cryptoportefeuille"
 					varStatus="vs">
 
@@ -64,7 +69,7 @@
 						<td>${cryptoportefeuille.valeurAchat }</td>
 						<td>${cryptoportefeuille.prixAchat }</td>
 						<td>${cryptoportefeuille.prixActuel }</td>
-						<td>${cryptoportefeuille.delta }</td>
+						<td class="delta">${cryptoportefeuille.delta }</td>
 						<td>
 							<div class="boutton-swag span4 proj-div"
 								id="ajouterModal${vs.index}" href="#" data-toggle="modal"
@@ -102,11 +107,14 @@
 						</div>
 					</div>
 				</c:forEach>
+
+
 			</tbody>
 		</table>
 
 	</div>
 
+	<script src="js/delta.js"></script>
 </body>
 
 
