@@ -19,6 +19,8 @@ public interface IDao2<T> {
 	CryptoPortefeuille getByName(String name);
 
 	CryptoPortefeuille getById(int id);
+
+	float getDeltaTotal();
 	
 
 }

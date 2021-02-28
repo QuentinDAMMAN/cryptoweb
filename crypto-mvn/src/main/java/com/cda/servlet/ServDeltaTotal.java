@@ -13,13 +13,13 @@ import com.cda.dao.IDao2;
 import com.cda.doa.Imp.CryptoPortefeuilleDaoImpl;
 import com.cda.model.CryptoPortefeuille;
 
-@WebServlet("/portefeuille")
-public class ServPortefeuille extends HttpServlet {
+@WebServlet("/deltaTotal")
+public class ServDeltaTotal extends HttpServlet {
 	public IDao2 cryptodao;
 
 	private static final long serialVersionUID = 1L;
 
-	public ServPortefeuille() {
+	public ServDeltaTotal() {
 
 		this.cryptodao = new CryptoPortefeuilleDaoImpl();
 	}
@@ -27,15 +27,7 @@ public class ServPortefeuille extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		float deltaTotal = this.cryptodao.getDeltaTotal();
-
-		request.setAttribute("deltaTotal", deltaTotal);
-
-		ArrayList<CryptoPortefeuille> cryptoportefeuille = this.cryptodao.getAll();
-
-		request.setAttribute("cryptoportefeuille", cryptoportefeuille);
-
-		request.getRequestDispatcher("WEB-INF/portefeuille.jsp").forward(request, response);
+	
 
 	}
 

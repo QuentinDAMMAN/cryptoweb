@@ -108,19 +108,11 @@ public class CryptoPortefeuilleDaoImpl implements IDao2 {
 
 	@Override
 	public Boolean update(float value, String label) {
-		String request = "update\r\n"
-				+ "	contenu\r\n"
-				+ "set\r\n"
-				+ "	contenu.nombre_unite =(contenu.nombre_unite-?)\r\n"
-				+ "where\r\n"
-				+ "contenu.Id_crypto_monnaies = 	\r\n"
-				+ "(\r\n"
-				+ "	select\r\n"
-				+ "		crypto_monnaies.Id_crypto_monnaies\r\n"
-				+ "	from\r\n"
-				+ "		crypto_monnaies\r\n"
-				+ "	where\r\n"
-				+ "		label = ?);";
+		String request = "update\r\n" + "	contenu\r\n" + "set\r\n"
+				+ "	contenu.nombre_unite =(contenu.nombre_unite-?)\r\n" + "where\r\n"
+				+ "contenu.Id_crypto_monnaies = 	\r\n" + "(\r\n" + "	select\r\n"
+				+ "		crypto_monnaies.Id_crypto_monnaies\r\n" + "	from\r\n" + "		crypto_monnaies\r\n"
+				+ "	where\r\n" + "		label = ?);";
 		int results = 0;
 		try {
 			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
@@ -144,7 +136,34 @@ public class CryptoPortefeuilleDaoImpl implements IDao2 {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
+	@Override
+	public float getDeltaTotal() {
+
+		String request = "select\r\n"
+				+ "	(contenu.nombre_unite * crypto_monnaies.prix_actuel) - (contenu.nombre_unite * contenu.prix_achat) as delta\r\n"
+				+ "from\r\n" + "	contenu\r\n" + "join crypto_monnaies on\r\n"
+				+ "	contenu.Id_crypto_monnaies = crypto_monnaies.Id_crypto_monnaies\r\n" + "order by\r\n"
+				+ "	crypto_monnaies.Id_crypto_monnaies;";
+		float deltaTotal = 0;
+		ResultSet results = null;
+		int resultat = 0;
+		try {
+			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
+			results = stmt.executeQuery();
+			while (results.next()) {
+				deltaTotal += results.getFloat(1);
+
+			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
+		} catch (SQLException e) {
+
+		}
+		if (resultat == 1) {
+			return deltaTotal;
+		}
+		return deltaTotal;
+
+	}
 }
