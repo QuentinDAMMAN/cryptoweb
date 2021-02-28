@@ -202,6 +202,6 @@
 
 	</div>
 
-	<script src="js/gestionsClickModal.js"></script>
+	<script src="js/gestionsClickModal.js""></script>
 </body>
 </html>

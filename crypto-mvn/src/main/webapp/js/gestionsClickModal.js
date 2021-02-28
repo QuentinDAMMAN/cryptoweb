@@ -38,7 +38,6 @@ $(function(){
 	$closeModalDel.click(function(){
 		$supprimer.css("display", "none");
 		// console.log("close => modal supprimer !");
-
 	});
 	$submitModalAdd.click(function(){
 		$ajouter.css("display", "none");
