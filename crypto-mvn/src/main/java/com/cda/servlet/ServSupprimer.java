@@ -17,9 +17,10 @@ public class ServSupprimer extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String label = req.getParameter("label");
+		String label = req.getParameter("label").toUpperCase();
 		CryptomonnaieDaoImpl delete = new CryptomonnaieDaoImpl();
 		delete.delete(label);
 		req.getRequestDispatcher("/index").forward(req, resp);

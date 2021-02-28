@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cda.doa.Imp.CryptoPortefeuilleDaoImpl;
+import com.cda.methods.ToUpperCaseFirst;
 import com.cda.model.CryptoPortefeuille;
 
 @WebServlet("/achat")
@@ -18,7 +19,7 @@ public class ServAchat extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String label = request.getParameter("label");
+		String label = request.getParameter("label").toUpperCase();
 		String prixStr = request.getParameter("prix");
 		float prix = Float.parseFloat(prixStr);
 		CryptoPortefeuilleDaoImpl create = new CryptoPortefeuilleDaoImpl();

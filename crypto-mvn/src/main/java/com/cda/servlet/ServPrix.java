@@ -16,9 +16,10 @@ public class ServPrix extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String label = req.getParameter("label");
+		String label = req.getParameter("label").toUpperCase();
 		String prixStr = req.getParameter("prix");
 		float prix = Float.parseFloat(prixStr);
 		CryptomonnaieDaoImpl update = new CryptomonnaieDaoImpl();
