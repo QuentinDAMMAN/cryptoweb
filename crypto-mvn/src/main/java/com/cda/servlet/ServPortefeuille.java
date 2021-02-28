@@ -27,21 +27,25 @@ public class ServPortefeuille extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		float deltaTotal = this.cryptodao.getDeltaTotal();
+	}
 
-		request.setAttribute("deltaTotal", deltaTotal);
+	try
 
+	{
 		ArrayList<CryptoPortefeuille> cryptoportefeuille = this.cryptodao.getAll();
-
 		request.setAttribute("cryptoportefeuille", cryptoportefeuille);
-
 		request.getRequestDispatcher("WEB-INF/portefeuille.jsp").forward(request, response);
-
+	}catch(
+	NumberFormatException e)
+	{
+		String message = "Veuillez remplir tous les champs";
+		request.setAttribute("message", message);
+		request.getRequestDispatcher("WEB-INF/erreur.jsp").forward(request, response);
+	}catch(
+	Exception e)
+	{
+		String message = "Veuillez remplir tous les champs";
+		request.setAttribute("message", message);
+		request.getRequestDispatcher("WEB-INF/erreur.jsp").forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-
-}
+}}

@@ -22,13 +22,24 @@ public class ServAjout extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String nom = ToUpperCaseFirst.upperCaseFirst(req.getParameter("nom"));
-		String label = req.getParameter("label").toUpperCase();
-		String prixStr = req.getParameter("prix");
-		float prix = Float.parseFloat(prixStr);
-		CryptomonnaieDaoImpl create = new CryptomonnaieDaoImpl();
-		create.create(new Cryptomonnaie(nom, label, prix));
-		req.getRequestDispatcher("/index").forward(req, resp);
+		try {
+			String nom = ToUpperCaseFirst.upperCaseFirst(req.getParameter("nom"));
+			String label = req.getParameter("label").toUpperCase();
+			String prixStr = req.getParameter("prix");
+			float prix = Float.parseFloat(prixStr);
+			CryptomonnaieDaoImpl create = new CryptomonnaieDaoImpl();
+			create.create(new Cryptomonnaie(nom, label, prix));
+			
+			req.getRequestDispatcher("/index").forward(req, resp);
+			
+		} catch (NumberFormatException e) {
+			String message = "Veuillez remplir tous les champs";
+			req.setAttribute("message", message);
+			req.getRequestDispatcher("WEB-INF/erreur.jsp").forward(req, resp);
+		} catch (Exception e) {
+			String message = "Veuillez remplir tous les champs";
+			req.setAttribute("message", message);
+			req.getRequestDispatcher("WEB-INF/erreur.jsp").forward(req, resp);
+		}
 	}
 }

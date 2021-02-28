@@ -19,11 +19,22 @@ public class ServPrix extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String label = req.getParameter("label").toUpperCase();
-		String prixStr = req.getParameter("prix");
-		float prix = Float.parseFloat(prixStr);
-		CryptomonnaieDaoImpl update = new CryptomonnaieDaoImpl();
-		update.update(prix, label);
-		req.getRequestDispatcher("/index").forward(req, resp);
+		try {
+			String label = req.getParameter("label").toUpperCase();
+			String prixStr = req.getParameter("prix");
+			float prix = Float.parseFloat(prixStr);
+			CryptomonnaieDaoImpl update = new CryptomonnaieDaoImpl();
+			update.update(prix, label);
+			req.getRequestDispatcher("/index").forward(req, resp);
+
+		} catch (NumberFormatException e) {
+			String message = "Veuillez remplir tous les champs";
+			req.setAttribute("message", message);
+			req.getRequestDispatcher("WEB-INF/erreur.jsp").forward(req, resp);
+		} catch (Exception e) {
+			String message = "Veuillez remplir tous les champs";
+			req.setAttribute("message", message);
+			req.getRequestDispatcher("WEB-INF/erreur.jsp").forward(req, resp);
+		}
 	}
 }

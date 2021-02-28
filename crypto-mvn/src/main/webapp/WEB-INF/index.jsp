@@ -62,16 +62,16 @@
                 <div class="modal-body ">
                     <form action="/crypto-mvn/ajout" method="post">
                         <label for="nom" style="margin-left:37px">Nom : </label>
-                        <input type="text" name="nom">
+                        <input id="nomA" type="text" name="nom"> 
                         <br>
                         <label for="label" style="margin-left:35px">Label : </label>
-                        <input type="text" name="label">
+                        <input id="textA" type="text" name="label">
                         <br>
                         <label for="prix">Prix actuel : </label>
                         <input type="number" step="0.01" name="prix">
 						<br>
 						<hr>
-                        <button id="submitModalAdd" type="submit" class="btn btn-primary bgd" >Ajouter</button>
+                        <button id="submitModalAdd" type="submit" class="btn btn-primary bgd">Ajouter</button>
 						<button id="closeModalAdd" type="button" class="btn btn-secondary droite"
                         data-dismiss="modal">Annuler</button>
                     </form>

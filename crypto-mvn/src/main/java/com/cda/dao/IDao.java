@@ -8,7 +8,7 @@ public interface IDao<T> {
 
 	T getById(int id);
 
-	T getByName(String name);
+	String getByName(String name);
 
 	T getByLabel(String label);
 
