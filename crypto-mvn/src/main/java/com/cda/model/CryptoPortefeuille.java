@@ -20,6 +20,7 @@ public class CryptoPortefeuille {
 	private float nombreUnite;
 	private float delta;
 	private Date dateAchat;
+	private float valeurVendu;
 
 	public int getId() {
 		return id;
@@ -47,6 +48,10 @@ public class CryptoPortefeuille {
 
 	public float getDelta() {
 		return delta;
+	}
+	
+	public float getValeurVendu() {
+		return valeurVendu;
 	}
 
 	public Date getDateAchat() {
@@ -101,5 +106,12 @@ public class CryptoPortefeuille {
 		this.valeurAchat = valeurAchat;
 		return this;
 	}
+
+	public CryptoPortefeuille setValeurVente(float valeurVendu) {
+		this.valeurVendu = valeurVendu;
+		return this;
+	}
+	
+	
 
 }

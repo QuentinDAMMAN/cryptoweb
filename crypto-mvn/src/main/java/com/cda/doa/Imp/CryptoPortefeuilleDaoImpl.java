@@ -81,8 +81,35 @@ public class CryptoPortefeuilleDaoImpl implements IDao2 {
 
 	@Override
 	public Boolean update(float value, String label) {
-		// TODO Auto-generated method stub
-		return null;
+		String request = "update\r\n"
+				+ "	contenu\r\n"
+				+ "set\r\n"
+				+ "	contenu.nombre_unite =(contenu.nombre_unite-?)\r\n"
+				+ "where\r\n"
+				+ "contenu.Id_crypto_monnaies = 	\r\n"
+				+ "(\r\n"
+				+ "	select\r\n"
+				+ "		crypto_monnaies.Id_crypto_monnaies\r\n"
+				+ "	from\r\n"
+				+ "		crypto_monnaies\r\n"
+				+ "	where\r\n"
+				+ "		label = ?);";
+		int results = 0;
+		try {
+			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
+
+			stmt.setFloat(1, value);
+
+			stmt.setString(2, label);
+			results = stmt.executeUpdate();
+		} catch (SQLIntegrityConstraintViolationException e) {
+
+		} catch (SQLException e) {
+		}
+		if (results == 1) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -90,5 +117,7 @@ public class CryptoPortefeuilleDaoImpl implements IDao2 {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 }
