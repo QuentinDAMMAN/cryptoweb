@@ -32,17 +32,12 @@
 									style="color: rgba(255, 255, 255, 0.575) !important;"
 									href="${ portefeuille }">MON PORTEFEUILLE</a>
 							</div>
-
-
-
-
 						</div>
 					</div>
 				</nav>
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<div class=" container-fluid tableau p-0">
 
 		<table class="table table-dark text-center">
@@ -56,40 +51,12 @@
 					<th scope="col">PRIX ACTUEL</th>
 					<th scope="col">DELTA</th>
 					<th scope="col">VENDRE</th>
-
 				</tr>
 			</thead>
 			<tbody>
-
 				<c:forEach items="${cryptoportefeuille }" var="cryptoportefeuille"
 					varStatus="vs">
 
-=======
-<<<<<<< Updated upstream
-
-=======
-	<div class=" container-fluid tableau p-0">
-
-		<table class="table table-dark text-center">
-			<thead class="head-tableau">
-				<tr>
-					<th scope="col">DATE D'ACHAT</th>
-					<th scope="col">LABEL</th>
-					<th scope="col">NOMBRE D'UNITES</th>
-					<th scope="col">VALEUR</th>
-					<th scope="col">PRIX ACHAT</th>
-					<th scope="col">PRIX ACTUEL</th>
-					<th scope="col">DELTA</th>
-					<th scope="col">VENDRE</th>
-
-				</tr>
-			</thead>
-			<tbody>
-
-				<c:forEach items="${cryptoportefeuille }" var="cryptoportefeuille"
-					varStatus="vs">
-
->>>>>>> edfa6feb5ea6ea05e7faa82c8cdc464c080a576b
 					<tr class="centrer">
 						<th scope="row">${cryptoportefeuille.dateAchat }</th>
 						<td>${cryptoportefeuille.label }</td>
@@ -110,13 +77,8 @@
 								</a>
 							</div>
 						</td>
-
 					</tr>
-<<<<<<< HEAD
-	<div id="vendre${vs.index}" class="modal" tabindex="-1"
-=======
 					<div id="vendre${vs.index}" class="modal" tabindex="-1"
->>>>>>> edfa6feb5ea6ea05e7faa82c8cdc464c080a576b
 						role="dialog">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
@@ -133,23 +95,18 @@
 											type="text" name="label"> <br> <label for=prix>Valeur
 											: </label> <input type="number" step="0.01" name="prix">
 										<button id="submitModalDel" type="submit"
-											class="btn btn-primary">ACHETER</button>
+											class="btn btn-primary">VENDRE</button>
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
-
-
 			</tbody>
 		</table>
 
 	</div>
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> edfa6feb5ea6ea05e7faa82c8cdc464c080a576b
+
 </body>
 
 
