@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.cda.dao.IDao2;
 import com.cda.model.CryptoPortefeuille;
+import com.cda.model.Cryptomonnaie;
 import com.cda.sql.MyConnection;
 
 public class CryptoPortefeuilleDaoImpl implements IDao2 {
@@ -75,7 +76,33 @@ public class CryptoPortefeuilleDaoImpl implements IDao2 {
 
 	@Override
 	public ArrayList<CryptoPortefeuille> getAll() {
-		// TODO Auto-generated method stub
+		String request = "select\r\n" + "	contenu.date_achat as dateAchat,\r\n"
+				+ "	crypto_monnaies.label as label,\r\n" + "	contenu.nombre_unite as nombreUnite,\r\n"
+				+ "	(contenu.nombre_unite * crypto_monnaies.prix_actuel) as valeur,\r\n"
+				+ "	contenu.prix_achat as prixAchat,\r\n" + "	crypto_monnaies.prix_actuel as prixActuel,\r\n"
+				+ "	(contenu.nombre_unite * crypto_monnaies.prix_actuel) - (contenu.nombre_unite * contenu.prix_achat) as delta\r\n"
+				+ "from\r\n" + "	contenu\r\n" + "join crypto_monnaies on\r\n"
+				+ "	contenu.Id_crypto_monnaies = crypto_monnaies.Id_crypto_monnaies\r\n" + "order by\r\n"
+				+ "	crypto_monnaies.Id_crypto_monnaies;";
+		ResultSet results = null;
+		ArrayList<CryptoPortefeuille> listCrytomonnaie = new ArrayList<CryptoPortefeuille>();
+		try {
+			PreparedStatement stmt = MyConnection.getConnection().prepareStatement(request);
+			results = stmt.executeQuery();
+			while (results.next()) {
+				CryptoPortefeuille crypto = new CryptoPortefeuille().setDateAchat(results.getDate(1))
+						.setLabel(results.getString(2)).setNombreUnite(results.getFloat(3))
+						.setValeurAchat(results.getFloat(4)).setPrixAchat(results.getFloat(5))
+						.setPrixActuel(results.getFloat(6)).setDelta(results.getFloat(7));
+				listCrytomonnaie.add(crypto);
+			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+
+		} catch (SQLException e) {
+		}
+		if (results != null) {
+			return listCrytomonnaie;
+		}
 		return null;
 	}
 
