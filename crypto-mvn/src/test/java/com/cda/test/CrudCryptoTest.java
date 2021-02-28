@@ -3,96 +3,136 @@ package com.cda.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.cda.doa.Imp.CryptomonnaieDaoImpl;
 import com.cda.model.Cryptomonnaie;
 import com.cda.sql.MyConnection;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class CrudCryptoTest {
 
+	private static Cryptomonnaie cryp;
+	private static Cryptomonnaie crypT;
+	private static CryptomonnaieDaoImpl test;
+	private static ArrayList<Cryptomonnaie> list;
+
+	@BeforeEach
+	public void before() {
+		resetValue();
+	}
+
+	/*
+	 * TEST CONNECTION
+	 */
 	@Test
+	@Order(1)
 	public void testConnection() {
 		assertNotEquals(MyConnection.getConnection(), null);
 	}
 
+	/*
+	 * TEST CREATE
+	 */
+
 	@Test
+	@Order(2)
 	public void testCreateCryptoWithoutDB() {
-		assertNotEquals(new Cryptomonnaie("DirectRacingCx", "DRC", 200.00), null);
+		assertNotEquals(cryp = new Cryptomonnaie("DirectRacingCx", "DRC", (float) 200.00), null);
 	}
 
 	@Test
+	@Order(3)
 	public void testCreateCryptoWithDB() {
-		CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-		assertNotEquals(test.create(new Cryptomonnaie("RogerFederCompany", "RFC", 1000.00)), null);
+		test = new CryptomonnaieDaoImpl();
+		assertNotEquals(test.create(cryp = new Cryptomonnaie("RogerFederCompany", "RFC", (float) 1000.00)), null);
 	}
 
+	/*
+	 * TEST READ
+	 */
+
 	@Test
-	public void testGetAllCrytoOnDB() {
-		CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-		test.create(new Cryptomonnaie("RafaelNadalCompany", "RNC", 620.00));
-		test.create(new Cryptomonnaie("NovakDjokovicCompany", "NDC", 281.00));
-		test.create(new Cryptomonnaie("AndyMurrayCompany", "AMC", 992.00));
-		test.create(new Cryptomonnaie("GaelMonFilsCompany", "GMC", 190.00));
-		ArrayList<Cryptomonnaie> list = new ArrayList<>();
-		list = test.getAll();
-		assertNotEquals(list, null);
-		assertEquals(list.size(), 4);
-	}
-	
-	@Test
+	@Order(4)
 	public void TestGetById() {
-		CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-		Cryptomonnaie crypto = test.create(new Cryptomonnaie("AndyRodick", "ARC", 791.00));
-		assertEquals(crypto, test.getById(crypto.getId()));
+		test = new CryptomonnaieDaoImpl();
+		crypT = test.create(cryp = new Cryptomonnaie("AndyRodick", "ARC", (float) 791.00));
+		assertEquals(crypT, test.getById(crypT.getId()));
 	}
-	
+
 	@Test
+	@Order(5)
 	public void TestGetByName() {
-		CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-		Cryptomonnaie crypto = test.create(new Cryptomonnaie("QuentinDamman", "QDC", 333.00));
-		assertEquals(crypto, test.getByName(crypto.getNom()));
+		test = new CryptomonnaieDaoImpl();
+		crypT = test.create(new Cryptomonnaie("QuentinDamman", "QDC", (float) 333.00));
+		assertEquals(crypT, test.getByName(crypT.getNom()));
 	}
-	
+
 	@Test
+	@Order(6)
 	public void TestGetByLabel() {
-		CryptomonnaieDaoImpl test = new CryptomonnaieDaoImpl();
-		Cryptomonnaie crypto = test.create(new Cryptomonnaie("MateoSaba", "MSC", 89.00));
-		assertEquals(crypto, test.getByLabel(crypto.getLabel()));
+		test = new CryptomonnaieDaoImpl();
+		crypT = test.create(new Cryptomonnaie("MateoSaba", "MSC", (float) 89.00));
+		assertEquals(crypT, test.getByLabel(crypT.getLabel()));
+	}
+
+	@Test
+	@Order(7)
+	public void testGetAllCrytoOnDB() {
+		test = new CryptomonnaieDaoImpl();
+		test.create(cryp = new Cryptomonnaie("RafaelNadalCompany", "RNC", (float) 620.00));
+		test.create(cryp = new Cryptomonnaie("NovakDjokovicCompany", "NDC", (float) 281.00));
+		test.create(cryp = new Cryptomonnaie("AndyMurrayCompany", "AMC", (float) 992.00));
+		test.create(cryp = new Cryptomonnaie("GaelMonFilsCompany", "GMC", (float) 190.00));
+		list = new ArrayList<>();
+		list = test.getAll();
+		int nombre = 0;
+		for (Cryptomonnaie cryptomonnaie : list) {
+			nombre++;
+		}
+		assertNotEquals(list, null);
+		assertEquals(list.size(), nombre);
+	}
+
+	/*
+	 * TEST UPDATE
+	 */
+
+	@Test
+	@Order(8)
+	public void TestUpdate() {
+		test = new CryptomonnaieDaoImpl();
+		crypT = test.create(cryp = new Cryptomonnaie("PaulSackeband", "PSC", (float) 291.00));
+		assertNotEquals(crypT, null);
+		assertEquals(test.update(500, crypT.getLabel()), true);
+	}
+
+	/*
+	 * TEST DELETE
+	 */
+
+	@Test
+	@Order(9)
+	public void TestDelete() {
+		test = new CryptomonnaieDaoImpl();
+		cryp = test.create(new Cryptomonnaie("HugoBogrand", "HBC", (float) 928.00));
+		assertNotEquals(cryp, null);
+		assertEquals(test.delete(cryp.getLabel()), true);
 	}
 	
-	
-	
-
-
-//
-//	/*
-//	 * Test Update Crypto
-//	 */
-////	String champs = "nom";
-////	String value = "Guikolp";
-////	boolean update = test.update(champs, value, 11);
-////
-////	if (update) {
-////		System.out.println("modif , ok !");
-////	} else {
-////		System.out.println("modif , erreur !");
-////	}
-//	
-//	/*
-//	 * Test Delete Crypto
-//	 */
-////	boolean delete = test.delete(11);
-////
-////	if (delete) {
-////		System.out.println("delete , ok !");
-////	} else {
-////		System.out.println("delete , erreur !");
-////	}
-//	
-//	/*
-
-
+	private static void resetValue() {
+		cryp = null;
+		crypT = null;
+		test = null;
+		list = null;
+	}
 }
