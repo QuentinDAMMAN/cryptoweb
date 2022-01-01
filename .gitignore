@@ -14,7 +14,7 @@ node_modules/
  
 # Package Files #
 *.jar
-*.war
+# *.war
 *.ear
 *.db
 rebel.xml
